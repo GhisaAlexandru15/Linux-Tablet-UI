@@ -1,0 +1,27 @@
+window {
+    font-size:0px;
+    font-family: "Roboto Medium";
+    background-color: rgba(50,50,50,0.7);
+    border-radius: 18px;
+}
+
+#entry{
+    margin: 0px 4px;
+    padding-left: 27px;
+}
+
+#entry:selected {
+    background: radial-gradient(#77b1e1 30%, #1791d1 90%);
+    border-radius: 12px;
+}
+
+#outer-box{
+		
+    border-radius: 18px;
+    border-width: 3px;
+    border-color: rgba(216,202,184,0.8);
+    border-style: solid;
+    padding-bottom: 3px;
+    padding-top: 3px;
+}
+

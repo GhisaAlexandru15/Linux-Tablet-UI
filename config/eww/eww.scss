@@ -1,0 +1,77 @@
+* {
+  all: unset;
+  background: transparent;
+  font-family: Maple Mono;
+}
+
+window {
+  background: transparent;
+}
+
+.container {
+  background-color: rgba(50,50,50,0.8);
+  border-width: 3px;
+  border-style: solid;
+  border-color: #d8cab8;
+  color: #d8cab8;
+  border-radius: 18px;
+}
+.userinfo-parent {
+  background-color: rgba(50,50,50,0.8);
+  color: #d8cab8;
+  border-radius: 12px;
+
+  border-width: 3px;
+  border-style: solid;
+  border-color: #1791d1;
+}
+.userinfo-child {
+  color: #d8cab8;
+
+}
+.label {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.button-label {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.completelytrans {
+  background: none;
+}
+
+.button {
+  border-radius: 6px;
+  margin: 10px;
+}
+.button:hover {
+  background-color: #1791d1;
+  color: #fcfcfc;
+  transition-duration: 150ms;
+}
+.button:active {
+  background-color: #d8cab8;
+  color: #141216;
+  transition-duration: 150ms;
+}
+
+
+.icon-label {
+  font-size: 45px;
+  font-weight: normal;
+}
+
+progressbar > trough {
+  min-width: 30px;  
+  min-height: 20px;   
+  border-radius: 20px;
+}
+
+progressbar > trough > progress {
+  background: linear-gradient(to top, #1793D1, #77b1e1); 
+  border-radius: 30px;
+  min-width: 30px;   
+}

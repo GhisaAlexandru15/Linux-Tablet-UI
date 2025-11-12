@@ -1,0 +1,183 @@
+* {
+    border: none;
+    border-radius: 0;
+    font-family: Roboto,'Font Awesome 10', 'SFNS Display',  Helvetica, Arial, sans-serif;
+    font-size: 20px;
+    min-height: 0;
+}
+
+window#waybar {
+    background: rgba(50, 50, 50, 0.7);
+    /*border-bottom: 3px solid rgba(216,202,184,0.8);*/
+    border-bottom: 3px solid rgba(216,202,184,0.8);
+    border-top: 3px solid rgba(216,202,184,0.8);
+    color: #d8cab8;
+}
+
+window#waybar.hidden {
+    opacity: 0.0;
+}
+/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
+#workspaces button {
+    padding: 0 5px;
+    background: transparent;
+    color: #d8cab8;
+    border-bottom: 3px solid transparent;
+}
+
+#workspaces button.focused {
+    background: #64727D;
+    border-bottom: 3px solid #1793D1;
+    border-top: 3px solid #1793D1;
+    color: #d8cab8;
+}
+
+#workspaces button.urgent {
+    background-color: orange;
+}
+
+#mode {
+    background: #64727D;
+    border-bottom: 3px solid #ffffff;
+}
+
+#clock, #battery, #cpu, #memory, #temperature, #network, #pulseaudio, #custom-media, #tray, #mode, #idle_inhibitor,#notifications{
+    padding: 0 12px;
+    margin: 0 0px;
+    border-radius: 0px;
+}
+#custom-keyboard, #custom-wofi, #custom-screen, #custom-close_window, #custom-powermenu
+{
+    padding: 0 10px;
+    margin: 0 5px;
+    border-radius: 0px;
+
+}
+
+#clock {
+    background-color: rgba(0, 0, 0, 0);
+    border-top: solid 3px #1791d1;
+    border-bottom: solid 3px #1791d1;
+}
+
+#battery {
+    background-color: rgba(0,0,0,0);
+}
+
+#battery.charging {
+    background-color: rgba(0,0,0,0);
+}
+
+@keyframes blink {
+    to {
+        background-color: #ffffff;
+        color: #000000;
+    }
+}
+
+#battery.critical:not(.charging) {
+    background: #f54c1c;
+    color: #ffffff;
+    animation-name: blink;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#cpu {
+    background: #2ecc71;
+    color: #000000;
+}
+
+#memory {
+    background: #9b59b6;
+}
+
+#custom-keyboard {
+background-image: url("/home/ghisa/.local/share/icons/keyboard.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+
+}
+
+#custom-wofi {
+    background-image: url("/usr/share/icons/Papirus/48x48/apps/start-here-archlinux.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
+#custom-screen{
+    background-image: url("/home/ghisa/.local/share/icons/screen.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+
+}
+
+#custom-close_window {
+    background-image: url("/usr/share/icons/Papirus/48x48/apps/x.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
+#custom-powermenu {
+    background-image: url("/usr/share/icons/Papirus/48x48/apps/system-shutdown.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+
+}
+
+#network {
+    background: rgba(0,0,0,0);
+}
+
+#network.disconnected {
+    background: rgba(0,0,0,0);
+}
+
+#pulseaudio {
+    background: rgba(0,0,0,0);
+}
+
+#pulseaudio.muted {
+    background: rgba(0,0,0,0);
+}
+
+#custom-media {
+    background: #66cc99;
+    color: #2a5c45;
+}
+
+.custom-spotify {
+    background: #66cc99;
+}
+
+.custom-vlc {
+    background: #ffa000;
+}
+
+#temperature {
+    background: #f0932b;
+}
+
+#temperature.critical {
+    background: #eb4d4b;
+}
+
+#tray {
+    background-color: #2980b9;
+}
+
+#idle_inhibitor {
+    background-color: #2d3436;
+}
+
+#idle_inhibitor.activated {
+    background-color: #ecf0f1;
+    color: #2d3436;
+}

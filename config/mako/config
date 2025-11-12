@@ -1,0 +1,9 @@
+layer=overlay
+max-history=3
+background-color=#323232B4
+text-color=#d8cab8
+font=monospace 14
+text-alignment=center
+border-color=#1791d1
+border-size=3
+border-radius=18

@@ -1,0 +1,6 @@
+[style]
+allow_images=true
+image_size=64
+no_actions=true
+sort-oder=alphabetical
+columns=5

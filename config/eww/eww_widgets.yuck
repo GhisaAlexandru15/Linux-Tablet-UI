@@ -1,0 +1,99 @@
+(include "eww_vars.yuck")
+
+(defwidget daybox []
+  (box :height "100" :width "100" :halign "center" :valign "center" :class "container"
+    (label :class "label"  :text DAY)
+  )
+)
+
+(defwidget monthbox []
+  (box :height "100" :width "100" :halign "center" :valign "center" :class "container"
+    (label :class "label"  :text MONTH)
+  )
+)
+
+(defwidget yearbox []
+  (box :height "100" :width "100" :halign "center" :valign "center" :class "container"
+    (label :class "label"  :text YEAR)
+  )
+)
+
+(defwidget userinfobox []
+  (centerbox :height "100" :width "340" :halign "center" :valign "center" :class "userinfo-parent"
+    (box :height "100" :width "113" :halign "center" :valign "center" :class "userinfo-child"
+      (button :onclick "kitty & disown" :class "button"
+        (label :class "icon-label"  :text "⌘")
+      )
+    )
+    (box :height "100" :width "113" :halign "center" :valign "center" :class "userinfo-child"
+      (button :onclick "GTK_THEME=diinki-retro-dark nautilus & disown"  :class "button"
+        (label :class "icon-label"  :text "🗀")
+      )
+    )
+    (box :height "100" :width "113" :halign "center" :valign "center" :class "userinfo-child"
+      (button :onclick "eww open powermenu" :class "button"
+        (label :class "icon-label"  :text "⭘")
+      )
+    )
+  )
+)
+
+(defwidget powermenu []
+  (box :height "100" :width "300" :halign "center" :valign "center" :class "userinfo-parent"
+    (box :height "100" :width "100" :halign "center" :valign "center" :class "userinfo-child"
+      (button :onclick "systemctl poweroff" :class "button"
+        (label :class "icon-label"  :text "")
+      )
+    )
+    (box :height "100" :width "100" :halign "center" :valign "center" :class "userinfo-child"
+      (button :onclick "systemctl reboot"  :class "button"
+        (label :class "icon-label"  :text "")
+      )
+    )
+    (box :height "100" :width "100" :halign "center" :valign "center" :class "userinfo-child"
+      (button :onclick "eww close powermenu && swaymsg exec '~/.local/bin/Screen_Lock/screen_lock.sh'" :class "button"
+        (label :class "icon-label"  :text "")
+      )
+    )
+ (box :height "100" :width "100" :halign "center" :valign "center" :class "userinfo-child"
+      (button :onclick "eww close powermenu && swaymsg exec '~/.local/bin/Screen_Lock/screen_lock_enable.sh'" :class "button"
+        (label :class "icon-label"  :text "󰤄")
+      )
+    )
+
+  )
+)
+
+(defwidget screen []
+
+  (box :height "100" :width "500" :halign "center" :valign "center" :class "userinfo-parent"
+  	(box :height "100" :width "100" :halign "center" :valign "center" :class "userinfo-child"
+        	(button :onclick "~/.local/bin/change_workspace.sh prev" :class "button"
+          	(label :class "icon-label" :text "")))
+	(box :height "100" :width "100" :halign "center" :valign "center" :class "userinfo-child"
+        	(button :onclick "swaymsg floating toggle && swaymsg border normal" :class "button"
+          	(label :class "icon-label" :text "󱂬")))
+    	(box :height "100" :width "100" :halign "center" :valign "center" :class "userinfo-child"
+        	(button :onclick "~/.local/bin/toggle_rotation.sh" :class "button"
+          	(label :class "icon-label" :text "")))
+      	(box :height "100" :width "100" :halign "center" :valign "center" :class "userinfo-child"
+        	(button :onclick "eww close screen &&  swaymsg exec '~/.local/bin/screenshot.sh'" :class "button"
+          	(label :class "icon-label" :text "")))
+ 	(box :height "100" :width "100" :halign "center" :valign "center" :class "userinfo-child"
+        	(button :onclick "~/.local/bin/change_workspace.sh next" :class "button"
+          	(label :class "icon-label" :text "")))
+
+    )
+)
+
+(defwidget volume-bar []
+  (box :class "container"
+    (progress
+      :value volume
+      :orientation "v"
+      :class "userinfo-child"
+      :flipped true
+    )
+  )
+)
+

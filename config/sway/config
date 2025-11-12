@@ -1,0 +1,327 @@
+# Default config for sway
+#
+# Copy this to ~/.config/sway/config and edit it to your liking.
+#
+# Read `man 5 sway` for a complete reference.
+
+### Variables
+#
+# Logo key. Use Mod1 for Alt.
+set $mod Mod4
+
+# Your preferred terminal emulator
+set $term foot
+
+# Window
+for_window [title="^.*"] title_format ""
+default_border pixel 3
+client.focused #00ff00 #1793D1 #184615 #1793D1
+smart_borders on
+
+# Floating apps
+for_window [app_id="pavucontrol"] floating enable
+for_window [app_id="nm-connection-editor"] floating enable
+for_window [app_id="blueberry"] floating enable
+for_window [app_id="galculator"] floating enable
+for_window [app_id="system-config-printer"] floating enable
+for_window [app_id="org.kde.kdeconnect.app"] floating enable
+for_window [app_id="org.kde.kdeconnect.daemon"] floating enable
+for_window [app_id="org.gnome.PowerStats"] floating enable
+for_window [app_id="org.gnome.Calendar"] floating enable
+for_window [app_id="org.gnome.Weather"] floating enable
+for_window [app_id="org.gnome.clocks"] floating enable
+for_window [app_id="org.gnome.tweaks"] floating enable
+for_window [app_id="org.gnome.music"] floating enable
+for_window [app_id="de.haeckerfelix.Shortwave"] floating enable
+for_window [class="Tk"] floating enable
+
+
+#Workspaces
+#internet
+for_window [app_id="firefox"] workspace 1
+assign [app_id="firefox"] 1
+
+#terminal
+for_window [app_id="foot"] workspace 2
+assign [app_id="foot"] 2
+   
+#file explorer
+for_window [app_id="org.gnome.Nautilus"] workspace 3
+assign [app_id="org.gnome.Nautilus"] 3
+
+#media
+for_window [app_id="org.gnome.Decibels"] workspace 4
+assign [app_id="org.gnome.Decibels"] 4
+
+for_window [app_id="org.gnome.Music"] workspace 4
+assign [app_id="org.gnome.Music"] 4
+
+for_window [app_id="org.gnome.Snapshot"] workspace 4
+assign [app_id="org.gnome.Snapshot"] 4
+
+for_window [app_id="org.gnome.Loupe"] workspace 4
+assign [app_id="org.gnome.Loupe"] 4
+
+for_window [app_id="io.github.celluloid_player.Celluloid"] workspace 4
+assign [app_id="io.github.celluloid_player.Celluloid"] 4
+
+for_window [class="Jellyfin Media Player"] workspace 4
+assign [class="Jellyfin Media Player"] 4
+
+#maps
+for_window [app_id="org.gnome.Maps"] workspace 5
+assign [app_id="org.gnome.Maps"] 5
+
+#pdf
+for_window [app_id="org.gnome.Papers"] workspace 6
+assign [app_id="org.gnome.Papers"] 6
+
+for_window [app_id="rnote"] workspace 6
+assign [app_id="rnote"] 6
+
+for_window [app_id="org.gnome.SimpleScan"] workspace 6
+assign [app_id="org.gnome.SimpleScan"] 6
+
+#code
+for_window [app_id="org.gnome.TextEditor"] workspace 7
+assign [app_id="org.gnome.TextEditor"] 7
+
+#office 
+assign [app_id="soffice"] 8
+
+assign [app_id="libreoffice-writer"] 8
+for_window [app_id="libreoffice-writer"] workspace 8
+
+assign [app_id="libreoffice-calc"] 8
+for_window [app_id="libreoffice-calc"] workspace 8
+
+assign [app_id="libreoffice-impress"] 8
+for_window [app_id="libreoffice-impress"] workspace 8
+
+assign [app_id="libreoffice-math"] 8
+for_window [app_id="libreoffice-math"] workspace 8
+
+assign [app_id="libreoffice-draw"] 8
+for_window [app_id="libreoffice-draw"] workspace 8
+
+assign [app_id="libreoffice-startcenter"] 8
+for_window [app_id="libreoffice-startcenter"] workspace 8
+
+#games
+assign [app_id="org.gnome.Mines"] 9
+for_window [app_id="org.gnome.Mines"] workspace 9
+
+assign [app_id="org.gnome.Mahjongg"] 9
+for_window [app_id="org.gnome.Mahjongg"] workspace 9
+
+assign [app_id="org.gnome.Sudoku"] 9
+for_window [app_id="org.gnome.Sudoku"] workspace 9
+
+assign [app_id="org.gnome.Chess"] 9
+for_window [app_id="org.gnome.Chess"] workspace 9
+
+assign [class="Little Navmap"] 9
+for_window [class="Little Navmap"] workspace 9
+
+set $menu exec ~/.local/bin/wofi.sh
+
+### Output configuration
+#
+# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
+output * bg ~/Pictures/Wallpaper/matterhorn.jpg fill
+font pango:DejaVu Sans 16
+
+### Input configuration
+
+   input "type:touchpad" {
+	accel_profile "flat"
+	tap enabled
+	natural_scroll enabled
+   }
+   input type:touch {
+	dwt enabled
+	tap enabled
+	natural_scroll enabled
+	middle_emulation enabled
+	tool_mode "*" relative
+	map_to_output DSI-1	
+   } 
+# You can get the names of your inputs by running: swaymsg -t get_inputs
+# Read `man 5 sway-input` for more information about this section.
+
+### Key bindings
+#
+# Basics:
+#
+    # Lock screen
+    bindsym $mod+l exec '~/.local/bin/Screen_Lock/screen_lock.sh'
+   
+    # Start a terminal
+    bindsym $mod+Return exec $term
+
+    # Kill focused window
+    bindsym $mod+Shift+q kill
+
+    # Start your launcher
+    bindsym $mod+d exec '~/.local/bin/Menu/wofi.sh'
+    # Drag floating windows by holding down $mod and left mouse button.
+    # Resize them with right mouse button + $mod.
+    # Despite the name, also works for non-floating windows.
+    # Change normal to inverse to use left mouse button for resizing and right
+    # mouse button for dragging.
+    floating_modifier $mod normal
+
+    # Reload the configuration file
+    bindsym $mod+Shift+c reload
+
+    # Exit sway (logs you out of your Wayland session)
+    bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+#
+# Moving around:
+#
+    # Move your focus around
+    #bindsym $mod+$left focus left
+    #bindsym $mod+$down focus down
+    #bindsym $mod+$up focus up
+    #bindsym $mod+$right focus right
+    # Or use $mod+[up|down|left|right]
+    bindsym $mod+Left focus left
+    bindsym $mod+Down focus down
+    bindsym $mod+Up focus up
+    bindsym $mod+Right focus right
+
+    # Move the focused window with the same, but add Shift
+    # Ditto, with arrow keys
+    bindsym $mod+Shift+Left move left
+    bindsym $mod+Shift+Down move down
+    bindsym $mod+Shift+Up move up
+    bindsym $mod+Shift+Right move right
+#
+# Workspaces:
+#
+    # Switch to workspace
+    bindsym $mod+1 exec "~/.local/bin/Screen_Lock/workspace_change.sh 1"
+    bindsym $mod+2 exec "~/.local/bin/Screen_Lock/workspace_change.sh 2"
+    bindsym $mod+3 exec "~/.local/bin/Screen_Lock/workspace_change.sh 3"
+    bindsym $mod+4 exec "~/.local/bin/Screen_Lock/workspace_change.sh 4"
+    bindsym $mod+5 exec "~/.local/bin/Screen_Lock/workspace_change.sh 5"
+    bindsym $mod+6 exec "~/.local/bin/Screen_Lock/workspace_change.sh 6"
+    bindsym $mod+7 exec "~/.local/bin/Screen_Lock/workspace_change.sh 7"
+    bindsym $mod+8 exec "~/.local/bin/Screen_Lock/workspace_change.sh 8"
+    bindsym $mod+9 exec "~/.local/bin/Screen_Lock/workspace_change.sh 9"
+    bindsym $mod+0 exec "~/.local/bin/Screen_Lock/workspace_change.sh 10"
+    # Move focused container to workspace
+    bindsym $mod+Shift+1 exec "~/.local/bin/Screen_Lock/workspace_move.sh 1"
+    bindsym $mod+Shift+2 exec "~/.local/bin/Screen_Lock/workspace_move.sh 2"
+    bindsym $mod+Shift+3 exec "~/.local/bin/Screen_Lock/workspace_move.sh 3"
+    bindsym $mod+Shift+4 exec "~/.local/bin/Screen_Lock/workspace_move.sh 4"
+    bindsym $mod+Shift+5 exec "~/.local/bin/Screen_Lock/workspace_move.sh 5"
+    bindsym $mod+Shift+6 exec "~/.local/bin/Screen_Lock/workspace_move.sh 6"
+    bindsym $mod+Shift+7 exec "~/.local/bin/Screen_Lock/workspace_move.sh 7"
+    bindsym $mod+Shift+8 exec "~/.local/bin/Screen_Lock/workspace_move.sh 8"
+    bindsym $mod+Shift+9 exec "~/.local/bin/Screen_Lock/workspace_move.sh 9"
+    bindsym $mod+Shift+0 exec "~/.local/bin/Screen_Lock/workspace_move.sh 10"
+    # Note: workspaces can have any name you want, not just numbers.
+    # We just use 1-10 as the default.ixt
+#
+# Layout stuff:
+#
+    # You can "split" the current object of your focus with
+    # $mod+b or $mod+v, for horizontal and vertical splits
+    # respectively.
+    bindsym $mod+b splith
+    bindsym $mod+v splitv
+
+    # Switch the current container between different layout styles
+    bindsym $mod+s layout stacking
+    bindsym $mod+w layout tabbed
+    bindsym $mod+e layout toggle split
+
+    # Make the current focus fullscreen
+    bindsym $mod+f fullscreen
+
+    # Toggle the current focus between tiling and floating mode
+    bindsym $mod+Shift+space floating toggle
+
+    # Swap focus between the tiling area and the floating area
+    bindsym $mod+space focus mode_toggle
+
+    # Move focus to the parent container
+    bindsym $mod+a focus parent
+#
+# Scratchpad:
+#
+    # Sway has a "scratchpad", which is a bag of holding for windows.
+    # You can send windows there and get them back later.
+
+    # Move the currently focused window to the scratchpad
+    bindsym $mod+Shift+minus move scratchpad
+
+    # Show the next scratchpad window or hide the focused scratchpad window.
+    # If there are multiple scratchpad windows, this command cycles through them.
+    bindsym $mod+minus scratchpad show
+#
+# Resizing containers:
+#
+mode "resize" {
+    # left will shrink the containers width
+    # right will grow the containers width
+    # up will shrink the containers height
+    # down will grow the containers height
+
+    # Ditto, with arrow keys
+    bindsym Left resize shrink width 10px
+    bindsym Down resize grow height 10px
+    bindsym Up resize shrink height 10px
+    bindsym Right resize grow width 10px
+
+    # Return to default mode
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+r mode "resize"
+#
+# Utilities:
+#
+    # Special keys to adjust volume via PulseAudio
+    bindsym --locked XF86AudioMute exec pactl set-sink-mute \@DEFAULT_SINK@ toggle
+    bindsym --locked XF86AudioLowerVolume exec "~/.local/bin/volume.sh down"  
+    bindsym --locked XF86AudioRaiseVolume exec "~/.local/bin/volume.sh up"
+    bindsym --locked XF86AudioMicMute exec pactl set-source-mute \@DEFAULT_SOURCE@ toggle
+    # Special keys to adjust brightness via brightnessctl 
+    bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
+    bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
+    # Special key to take a screenshot with grim
+    bindsym Print exec grim
+    bindsym XF86PowerOff exec ~/.local/bin/Screen_Lock/screen_lock.sh
+    #bindsym XF86Sleep 
+    bindsym $mod+Shift+p exec grim -g "$(slurp -p)" -t ppm - | convert - -format '%[pixel:p{0,0}]' txt:- | tail -n 1 | cut -d ' ' -f 4 | wl-copy 
+
+#
+# Status Bar:
+#
+# Read `man 5 sway-bar` for more information about this section.
+bar {
+	swaybar_command waybar
+    }
+
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec --no-startup-id ~/.local/bin/auto_rotation.sh
+exec --no-startup-id eww daemon
+exec --no-startup-id notify-send -t 10 -u low " "
+exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent &
+exec --no-startup-id echo 1 > ~/.local/bin/status/screen
+exec --no-startup-id ~/.local/bin/Screen_Lock/screen_lock.sh init
+exec --no-startup-id gammastep -l 23:45 -t 4400:4000 -b 0.8:0.65 
+exec --no-startup-id kdeconnectd
+
+
+
+# Cursor (Sway + apps)
+seat seat0 xcursor_theme 'Bibata-Modern-Ice' 24
+
+
+
+# Optional: Qt apps theme support (needs qt5ct/qt6ct installed)
+
+include /etc/sway/config.d/*

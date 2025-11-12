@@ -1,0 +1,118 @@
+{
+    "layer": "top", 
+    "position": "top", 
+    "height": 48, 
+    "modules-left": ["sway/workspaces", "sway/mode", "custom/media"],
+    "modules-center": ["custom/wofi","custom/keyboard", "custom/screen", "custom/close_window", "custom/powermenu"],
+    "modules-right": ["tray","pulseaudio", "network", "battery","clock"],
+     "sway/workspaces": {
+         "disable-scroll": true,
+         "disable-markup" : false,
+         "all-outputs": true,
+         "format": "  {icon}  ",
+         "format-icons": {
+             "focused": "",
+             "default": ""
+         }
+     },
+    "sway/mode": {
+        "format": "<span style=\"italic\">{}</span>"
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
+    },
+    "tray": {
+        "icon-size": 21,
+        "spacing": 10
+    },
+    "clock": {
+	"format": "{:%H:%M}",
+        "format-alt": "{:%d-%m-%Y}"
+    },
+    "cpu": {
+        "format": "{usage}% "
+    },
+    "memory": {
+        "format": "{}% "
+    },
+    "temperature": {
+        "critical-threshold": 80,
+        "format": "{temperatureC}°C "
+    },
+    "custom/keyboard": {
+        "format": "     ",
+        "on-click": "~/.local/bin/wvkbd.sh",
+        "tooltip": "Click to toggle virtual keyboard"
+    },
+    "custom/wofi": {
+        "format":"     ",
+        "on-click": "~/.local/bin/Menu/wofi.sh",
+        "tooltip": "Click to start wofi"
+    },
+    "custom/screen": {
+        "format": "     ",
+        "on-click": "~/.local/bin/Menu/eww.sh screen"
+    },
+    "custom/close_window": {
+        "format": "     ",
+        "on-click": "~/.local/bin/close_window.sh",
+        "tooltip": "Close current window"
+    },
+    "custom/powermenu": {
+        "format": "     ",
+        "on-click": "~/.local/bin/Menu/eww.sh powermenu",
+        "tooltip": "Close screen"
+    },
+
+
+    "battery": {
+        "states": {
+            "good": 90,
+            "warning": 80,
+            "critical": 10
+        },
+        "format": "{icon} {capacity}%",
+        "on-click": "gnome-power-statistics",
+        "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾","󰁿","󰂀","󰂁","󰂂","󰁹" ],
+	"format-charging": "󰂄 {capacity}%"
+    },
+    "network": {
+        "format-wifi": "{icon}",
+        "format-icons": ["󰤟", "󰤢", "󰤥", "󰤨"],
+	"format-ethernet": "󰈀",
+	"format-disconnected": "󰤯",
+        "on-click": "nm-connection-editor",
+	"interval": 10
+
+    },
+    "pulseaudio": {
+        "format": "{icon}",
+        "format-bluetooth": "",
+        "format-muted": "",
+        "format-icons": {
+            "headphones": "",
+            "handsfree": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", ""]
+        },
+        "on-click": "pavucontrol"
+    },
+    "custom/media": {
+        "format": "{icon} {}",
+        "return-type": "json",
+        "max-length": 40,
+        "format-icons": {
+            "spotify": "",
+            "default": "🎜"
+        },
+        "escape": true,
+        "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" 
+    }
+}
